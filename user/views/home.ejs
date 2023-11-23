@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HOME PAGE</title>
+   
+</head>
+<body>
+    <div style="display: flex;justify-content: space-between;">
+
+    <h1>home</h1>
+    <div >
+      
+        <button id="book" style="height: 50px;" onclick=bookfn()>book a ride </button>
+        <button  id="logout" onclick=logoutfn() style="height: 50px;">logout</button>
+
+    </div>
+   
+
+    </div>
+
+ 
+    <script>
+        // import express from "express"
+        const logoutbtn = document.querySelector("#logout")
+        function logoutfn(){
+            location.assign("/login");
+        }
+        const book = document.querySelector("#book");
+        function bookfn(){
+            location.assign("/newbook")
+        }
+        
+    </script>
+   
+</body>
+</html>
