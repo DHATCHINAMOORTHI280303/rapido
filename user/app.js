@@ -4,6 +4,7 @@ const cookieparser = require("cookie-parser");
 const bp = require("body-parser");
 const path = require("path");
 const app = express();
+const cors = require("cors");
 
 
 app.set("view engine","ejs");
@@ -13,7 +14,7 @@ app.set('view options', {
 });
 app.set("views",path.join(__dirname,"views"));
 
-
+app.use(cors());
 app.use(express.json());
 app.use(cookieparser());
 app.use(bp.urlencoded({extended:true}));
@@ -26,12 +27,6 @@ const authenticate = require("./middleware/authmiddleware");
 
 database.dbconnect();
 
-
-// mongoose.connect("mongodb://localhost:27017/JWT_auth")
-// .then(()=>{app.listen(4000,()=>{
-//     console.log("server is running at port 4000")
-// })})
-// .catch((err)=>{console.log(err)});
 
 app.listen(3000,()=>{
     console.log("server is running on 3000");

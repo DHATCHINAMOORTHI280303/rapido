@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HOME PAGE</title>
+   
+</head>
+<body>
+    <div style="display: flex;justify-content: space-between;">
+
+    <h1>home</h1>
+    <div >
+      
+        <button id="book" style="height: 50px;" onclick=activefn()>Active</button>
+        <button  id="logout" onclick=logoutfn() style="height: 50px;">logout</button>
+        <button id="searchbtn" onclick=searchfn() style="height: 50px;">search</button>
+
+    </div>
+   
+
+    </div>
+
+ 
+    <script>
+        // import express from "express"
+        const logoutbtn = document.querySelector("#logout")
+        function logoutfn(){
+            location.assign("/login");
+        }
+        const book = document.querySelector("#book");
+        async function activefn(){
+            // location.assign("/newbook")
+            // alert("activated");
+           
+            await fetch("/active");
+           
+        }
+        async function searchfn(){
+            location.assign("/request")
+        }
+        
+    </script>
+   
+</body>
+</html>

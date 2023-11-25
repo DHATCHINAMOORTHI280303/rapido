@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>REQUESTS</h1>
+    <ul>
+        <% for (let i = 0; i < requests.length; i++) { %>
+            <li>Name : <%= requests[i].Name %> - Source : <%= requests[i].Source %> - Destination : <%=requests[i].Destination%> <button id="accept" onclick="acceptfn(`<%=requests[i]._id%>`)">Accept</button></li>
+          <% } %>
+    </ul>
+    <script>
+        const accept = document.querySelector("#accept")
+       
+        async function acceptfn(rid){
+            try {
+                console.log(rid)
+                const res = await fetch(`/accept?id=${rid}`);
+                const data = await res.json();
+                console.log(data.result);
+                if(data.result){
+                    location.assign("/");
+                }
+            } catch (error) {
+                
+            }
+           
+            
+        }
+    </script>
+  
+    
+
+    
+</body>
+</html>
