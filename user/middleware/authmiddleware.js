@@ -22,7 +22,7 @@ async function authenticate(req,res,next){
             }
             else{
                 const ac = req.cookies.jwtaccess;
-                console.log(ac)
+                // console.log(ac)
                 jwt.verify(ac, "rdm secret access", (err, user) => {
                     if (err) {
                         console.log("access:",err.message);
@@ -33,7 +33,7 @@ async function authenticate(req,res,next){
                         }
                     }
                     else {
-                        console.log(user);
+                        // console.log(user);
                         next();
                     }})
 

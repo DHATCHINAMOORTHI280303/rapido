@@ -24,13 +24,11 @@ const authrouter = require("./routes/authroutes");
 const bookrouter = require("./routes/bookroutes");
 const detailsrouter  = require("./routes/userdetailsroutes");
 const authenticate = require("./middleware/authmiddleware");
+const paymentrouter = require("./routes/paymentroutes");
 
 database.dbconnect();
 
 
-app.listen(3000,()=>{
-    console.log("server is running on 3000");
-})
 app.use(authrouter);
 app.use(detailsrouter);
 app.get("/",authenticate,(req,res)=>{
@@ -38,3 +36,10 @@ app.get("/",authenticate,(req,res)=>{
     res.render("home.ejs");
 })
 app.use(authenticate,bookrouter);
+app.use(authenticate,paymentrouter);
+// app.get("/",(req,res)=>{
+//     res.send("hello");
+// })
+app.listen(3000,()=>{
+    console.log("server is running on 3000");
+})

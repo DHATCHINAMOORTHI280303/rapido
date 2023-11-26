@@ -69,7 +69,7 @@ module.exports.login_post = async(req,res)=>{
     console.log(email,password);
     try {
         var user = await User.login(email,password);
-        console.log(user);
+        // console.log(user);
         var _id = user._id;
         var accesstoken = createaccesstoken(user._id);
         var refreshtoken = createrefreshtoken(user._id);

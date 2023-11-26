@@ -20,7 +20,15 @@ const requestSchema = new mongoose.Schema({
     Destination:{
         type:String,
         required:true
-    }
+    },
+    Accept:{
+        type:String,
+        default:"false"
+    },
+    // Vehicle:{
+    //     type:String,
+    //     required:true
+    // }
 })
 const Requests = mongoose.model("requests",requestSchema);
 module.exports = Requests;

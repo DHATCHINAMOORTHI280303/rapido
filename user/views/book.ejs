@@ -17,17 +17,18 @@
     </form>
     <ul>
         <% for (let i = 0; i < driver.length; i++) { %>
-            <li>Name : <%= driver[i].Name %> - Location : <%= driver[i].Cur_location %>   <button id="selectdriver" onclick=pick()>select</button></li>
+            <li>Name : <%= driver[i].Name %> - Location : <%= driver[i].Cur_location %>   <button id="selectdriver" onclick="pick(`<%= driver[i]._id%>`)">select</button></li>
           <% } %>
     </ul>
 
 
     <script>
         const form = document.querySelector("form");
+        
       
         const cookie = document.cookie.split(";")
         
-        async function pick(){
+        async function pick(did){
             console.log("click event");
             const body = {};
             cookie.forEach(element => {
@@ -36,7 +37,7 @@
             });
             const res = await fetch("/newbook/request",{
                 method : "POST",
-                body:JSON.stringify({source :body["source"] ,dest:body["dest"],id:body["id"],did:body["did"]}),
+                body:JSON.stringify({source :body["source"] ,dest:body["dest"],id:body["id"],did:did}),
                 headers:{"Content-Type":"application/json"}
             });
             const data = await res.json();

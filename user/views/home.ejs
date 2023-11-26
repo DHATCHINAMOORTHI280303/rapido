@@ -12,6 +12,7 @@
       
         <button id="book" style="height: 50px;" onclick=bookfn()>book a ride </button>
         <button  id="logout" onclick=logoutfn() style="height: 50px;">logout</button>
+        <button id="history" onclick="historyfn()" style="height:50px;">Booking History</button>
 
     </div>
    
@@ -28,6 +29,9 @@
         const book = document.querySelector("#book");
         function bookfn(){
             location.assign("/newbook")
+        }
+        async function historyfn(){
+            location.assign("/bookinghistory");
         }
         
     </script>

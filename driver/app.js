@@ -11,6 +11,9 @@ const cookieparser = require("cookie-parser");
 const cors = require("cors")
 // const events = require("events");
 const database = require("./db");
+// const socketIO = require("socket.io");
+// const http = require("http");
+// const server = http.createServer(app);
 database.dbconnect();
 
 
@@ -50,6 +53,9 @@ app.use(requestrouter);
 // eventEmitter.on("customEvent", (data) => {
 //     console.log("Received event:", data.message);
 // });
+// app.listen(4000,()=>{
+//     console.log("server is running on 4000D");
+// })
 app.listen(4000,()=>{
     console.log("server is running on 4000D");
 })

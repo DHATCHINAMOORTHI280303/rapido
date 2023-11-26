@@ -12,8 +12,16 @@
             <li>Name : <%= requests[i].Name %> - Source : <%= requests[i].Source %> - Destination : <%=requests[i].Destination%> <button id="accept" onclick="acceptfn(`<%=requests[i]._id%>`)">Accept</button></li>
           <% } %>
     </ul>
+    <h1>Accepts</h1>
+    <ul>
+        <% for (let i = 0; i < accepts.length; i++) { %>
+            <li>Name : <%= accepts[i].Name %> - Source : <%= accepts[i].Source %> - Destination : <%=accepts[i].Destination%> <button id="cancel" onclick="cancelfn(`<%=accepts[i]._id%>`)">Cancel</button></li>
+          <% } %>
+    </ul>
+
     <script>
         const accept = document.querySelector("#accept")
+        const cancel = document.querySelector("#cancel")
        
         async function acceptfn(rid){
             try {
@@ -22,13 +30,21 @@
                 const data = await res.json();
                 console.log(data.result);
                 if(data.result){
-                    location.assign("/");
+                    location.assign("/request");
                 }
             } catch (error) {
                 
             }
-           
-            
+                  
+        }
+        async function cancelfn(rid){
+            console.log(rid)
+            const res = await fetch(`/cancel?id=${rid}`);
+            const data = await res.json();
+            console.log(data.result);
+            if(data.result){
+                location.assign("/request");
+            }
         }
     </script>
   
